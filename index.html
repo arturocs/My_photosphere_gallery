@@ -19,17 +19,19 @@
 			<img id="PANO4" src="img/PANO_4.jpg">
 		</a-assets>
 		<a-entity camera look-controls></a-entity>
-		<a-sky id="sky" src="#PANO0" rotation="0 -90 0"></a-sky>
+		<a-sky id="sky" rotation="0 -90 0"></a-sky>
 	</a-scene>
 </body>
 <script>
-	window.onload = function () {
+	document.querySelector('a-assets').addEventListener('loaded', function () {
 		var nPictures = 5;
 		var touchCount = 0;
 		var scene = document.querySelector('#scene');
-		
+		var sky = document.querySelector('#sky');
+		sky.setAttribute('src', "#PANO0");
+
 		var changePic = function () {
-			var sky = document.querySelector('#sky');
+
 			touchCount++;
 			sky.setAttribute('src', "#PANO" + touchCount % nPictures);
 
@@ -39,7 +41,7 @@
 		} else {
 			scene.addEventListener('dblclick', changePic);
 		}
-	};
+	});
 </script>
 
 </html>
