@@ -16,33 +16,14 @@
 	</a-scene>
 </body>
 <script>
-	function imageExists(image_url, async) {
-		var http = new XMLHttpRequest();
-		http.open('HEAD', image_url, async);
-		http.send();
-		return http.status == 200;
-	}
-
-	function image_number(){
-		var i=0;
-		while(imageExists("https://arturocs.github.io/My_photosphere_gallery/img/PANO_"+i+".jpg")){
-			i++;
-		}
-		return i;
-	}
-
 	window.onload = function () {
-		var nPictures= image_number();
+		var nPictures = 5;
 		var touchCount = 0;
 		var scene = document.querySelector('#scene');
 		var sky = document.querySelector('#sky');
 		scene.addEventListener('dblclick', function () {
 			touchCount++;
-			sky.parentNode.removeChild(sky)
-			sky = document.createElement('a-sky');
 			sky.setAttribute('src', "img/PANO_" + touchCount % nPictures + ".jpg");
-			scene.appendChild(sky)
-			//sky.setAttribute('src', "img/PANO_" + touchCount % nPictures + ".jpg");
 		});
 	};
 </script>
