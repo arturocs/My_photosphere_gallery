@@ -18,17 +18,16 @@
 <script>
 	function imageExists(image_url) {
 		var http = new XMLHttpRequest();
-		http.open('HEAD', image_url, true);
+		http.open('HEAD', image_url, false);
 		http.send();
 		return http.status != 404;
 	}
 
 	function image_number(){
-		var i=0
+		var i=0;
 		while(imageExists("https://arturocs.github.io/My_photosphere_gallery/img/PANO_"+i+".jpg")){
-			i++
+			i++;
 		}
-		console.log(i);
 		return i;
 	}
 
