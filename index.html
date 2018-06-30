@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Photospheres</title>
+	<meta name="description" content="Photospheres">
+	<script src="scripts/aframe.min.js"></script>
+
+</head>
+
+<body>
+	<a-scene id="scene">
+		<a-entity camera look-controls></a-entity>
+		<a-sky id="sky" src="img/PANO_0.jpg" rotation="0 -90 0"></a-sky>
+	</a-scene>
+</body>
+<script>
+	function imageExists(image_url) {
+		var http = new XMLHttpRequest();
+		http.open('HEAD', image_url, false);
+		http.send();
+		return http.status != 404;
+	}
+
+	function image_number(){
+		var i=0
+		while(imageExists("arturocs.github.io/My_photosphere_gallery/img/PANO_"+i+".jpg")){
+			i++
+		}
+		console.log(i)
+		return i
+	}
+
+	window.onload = function () {
+		var nPictures= image_number();
+		var touchCount = 0;
+		var scene = document.querySelector('#scene');
+		var sky = document.querySelector('#sky');
+		scene.addEventListener('dblclick', function () {
+			touchCount++;
+			sky.setAttribute('src', "img/PANO_" + touchCount % nPictures + ".jpg");
+		});
+	};
+</script>
+
+</html>
