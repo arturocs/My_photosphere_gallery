@@ -19,7 +19,11 @@
 			<img id="PANO4" src="img/PANO_4.jpg">
 		</a-assets>
 		<a-entity camera look-controls></a-entity>
-		<a-sky id="sky" rotation="0 -90 0"></a-sky>
+		<a-text class="loading" value="Loading" width="6" position="-0.5 0.25 -1.5"></a-text>
+		<a-text class="loading" value="Loading" width="6" position="-1.5 0.25 0.5" rotation="0 90 0"></a-text>
+		<a-text class="loading" value="Loading" width="6" position="1.5 0.25 -0.5" rotation="0 -90 0"></a-text>
+		<a-text class="loading" value="Loading" width="6" position="0.5 0.25 1.5" rotation="0 180 0"></a-text>
+		<a-sky id="sky" color=#000000 rotation="0 -90 0"></a-sky>
 	</a-scene>
 </body>
 <script>
@@ -28,6 +32,15 @@
 		var touchCount = 0;
 		var scene = document.querySelector('#scene');
 		var sky = document.querySelector('#sky');
+		sky.setAttribute('color', "#ffffff");
+		//document.querySelector('a-text').setAttribute("visible",false);
+		var loadings = document.getElementsByClassName("loading");
+		for (i = 0; i < loadings.length; i++) {
+			loadings[i].setAttribute("visible",false);
+		}
+		/*loadings.forEach(loading => {
+			loading.setAttribute("visible",false);
+		});*/
 		sky.setAttribute('src', "#PANO0");
 
 		var changePic = function () {
