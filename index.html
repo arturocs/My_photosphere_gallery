@@ -23,18 +23,22 @@
 	</a-scene>
 </body>
 <script>
-	
-
 	window.onload = function () {
 		var nPictures = 5;
 		var touchCount = 0;
 		var scene = document.querySelector('#scene');
-		var sky = document.querySelector('#sky');
-		scene.addEventListener('dblclick', function () {
+		
+		var changePic = function () {
+			var sky = document.querySelector('#sky');
 			touchCount++;
 			sky.setAttribute('src', "#PANO" + touchCount % nPictures);
 
-		});
+		}
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+			scene.addEventListener('touchend', changePic);
+		} else {
+			scene.addEventListener('dblclick', changePic);
+		}
 	};
 </script>
 
