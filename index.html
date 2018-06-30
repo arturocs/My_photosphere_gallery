@@ -20,7 +20,7 @@
 		var http = new XMLHttpRequest();
 		http.open('HEAD', image_url, async);
 		http.send();
-		return http.status != 404;
+		return http.status == 200;
 	}
 
 	function image_number(){
