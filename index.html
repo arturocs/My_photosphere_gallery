@@ -39,7 +39,11 @@
 		var sky = document.querySelector('#sky');
 		scene.addEventListener('dblclick', function () {
 			touchCount++;
+			sky.parentNode.removeChild(sky)
+			sky = document.createElement('a-sky');
 			sky.setAttribute('src', "img/PANO_" + touchCount % nPictures + ".jpg");
+			scene.appendChild(sky)
+			//sky.setAttribute('src', "img/PANO_" + touchCount % nPictures + ".jpg");
 		});
 	};
 </script>
