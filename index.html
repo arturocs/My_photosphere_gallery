@@ -23,16 +23,18 @@
 		return http.status != 404;
 	}
 
-	function image_number(){
-		var i=0;
-		while(imageExists("https://arturocs.github.io/My_photosphere_gallery/img/PANO_"+i+".jpg")){
+	function image_number() {
+		var i = 0;
+		while (imageExists("https://arturocs.github.io/My_photosphere_gallery/img/PANO_" + i + ".jpg")) {
 			i++;
+			console.log(i)
 		}
+		console.log(i)
 		return i;
 	}
 
 	window.onload = function () {
-		var nPictures= image_number();
+		var nPictures = image_number();
 		var touchCount = 0;
 		var scene = document.querySelector('#scene');
 		var sky = document.querySelector('#sky');
