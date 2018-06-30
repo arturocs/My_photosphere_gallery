@@ -11,7 +11,7 @@
 
 <body>
 	<a-scene id="scene">
-		<a-assets id="assets" timeout="50000">
+		<a-assets id="assets">
 			<img id="PANO0" src="img/PANO_0.jpg">
 			<img id="PANO1" src="img/PANO_1.jpg">
 			<img id="PANO2" src="img/PANO_2.jpg">
@@ -27,35 +27,30 @@
 	</a-scene>
 </body>
 <script>
-	document.querySelector('#assets').addEventListener('loaded', function () {
-		console.log("assets loaded")
+
+	document.querySelector('body').onload = function () {
 		var nPictures = 5;
 		var touchCount = 0;
 		var scene = document.querySelector('#scene');
 		var sky = document.querySelector('#sky');
 		sky.setAttribute('color', "#ffffff");
-		//document.querySelector('a-text').setAttribute("visible",false);
 		var loadings = document.getElementsByClassName("loading");
 		for (i = 0; i < loadings.length; i++) {
-			loadings[i].setAttribute("visible",false);
+			loadings[i].setAttribute("visible", false);
 		}
-		/*loadings.forEach(loading => {
-			loading.setAttribute("visible",false);
-		});*/
+
 		sky.setAttribute('src', "#PANO0");
 
 		var changePic = function () {
-
 			touchCount++;
 			sky.setAttribute('src', "#PANO" + touchCount % nPictures);
-
 		}
 		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 			scene.addEventListener('touchend', changePic);
 		} else {
 			scene.addEventListener('dblclick', changePic);
 		}
-	});
+	};
 </script>
 
 </html>
