@@ -6,7 +6,6 @@
 	<title>Photospheres</title>
 	<meta name="description" content="Photospheres">
 	<script src="scripts/aframe.min.js"></script>
-
 </head>
 
 <body>
@@ -27,18 +26,16 @@
 	</a-scene>
 </body>
 <script>
-
 	document.querySelector('body').onload = function () {
-		var nPictures = 5;
+		var nPictures = (document.querySelector('#assets').childNodes.length - 1) / 2;
 		var touchCount = 0;
 		var scene = document.querySelector('#scene');
 		var sky = document.querySelector('#sky');
-		sky.setAttribute('color', "#ffffff");
-		var loadings = document.getElementsByClassName("loading");
-		for (i = 0; i < loadings.length; i++) {
-			loadings[i].setAttribute("visible", false);
-		}
 
+		Array.from(document.getElementsByClassName("loading")).forEach(loading => {
+			loading.setAttribute("visible", false);
+		});
+		sky.setAttribute('color', "#ffffff");
 		sky.setAttribute('src', "#PANO0");
 
 		var changePic = function () {
